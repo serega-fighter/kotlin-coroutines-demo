@@ -7,7 +7,10 @@ fun main() = runBlocking { // this: CoroutineScope
     println("Hello")
 }
 
-suspend fun doWorld() {
-    delay(1000L)
-    println("World!")
+suspend fun doWorld() = coroutineScope {  // this: CoroutineScope
+    launch {
+        delay(1000L)
+        println("World!")
+    }
+    println("Hello")
 }
